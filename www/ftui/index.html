@@ -3,167 +3,363 @@
 
 <head>
   <!--
-    /* FHEM tablet ui - FTUI */
-    /**
-    * UI builder framework for FHEM
-    *
-    * Version: 3.0.0
-    *
-    * Copyright (c) 2015-2020 Mario Stephan <mstephan@shared-files.de>
-    * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
-    * https://github.com/knowthelist/ftui
-    */
-    -->
+  /* FHEM tablet ui - FTUI */
+  /**
+  * UI builder framework for FHEM
+  *
+  * Version: 3.0.0
+  *
+  * Copyright (c) 2015-2020 Mario Stephan <mstephan@shared-files.de>
+  * Under MIT License (http://www.opensource.org/licenses/mit-license.php)
+  * https://github.com/knowthelist/ftui
+  */
+  -->
   <script src="ftui.js"></script>
+  <script src="js/pipe.js"></script>
 
+  <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="./img/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./img/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./img/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./img/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./img/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./img/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+  <link rel="manifest" href="./img/manifest.json">
+  <meta name="msapplication-TileColor" content="#223343">
+  <meta name="msapplication-TileImage" content="./img/ms-icon-144x144.png">
+  <meta name="theme-color" content="#223343">
+
+  <link href="themes/smartheim-mobile-theme.css" rel="stylesheet">
   <link href="ftui.css" rel="stylesheet">
-  <link href="themes/ftui-theme.css" rel="stylesheet">
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
 
   <!-- avoid 300ms delay on click-->
   <meta name="viewport" content="width=device-width">
+  <meta name="widget_base_width" content="116">
+  <meta name="widget_base_height" content="131">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name='lang' content='de'>
+  <meta charset="utf-8"/>
 
   <!-- when serving the page with other web servers, e.g. lighttpd -->
-  <!-- <meta name="fhemweb_url" content="http://fhem.local:8083/fhem/"> -->
+  <!--meta name="fhemweb_url" content="http://de2.portmap64.net:46612/fhem"-->
 
   <!-- verbose level 0-4 -->
-  <meta name="debug" content="2">
+  <meta name="debug" content="0">
 
-  <title>FTUI Demo</title>
+  <title>SmartHeim</title>
+
 </head>
 
 <body>
 
-  <!--   <ftui-grid cols="30" rows="20" resize> -->
-  <ftui-grid base-width="70" base-height="70" margin="5">
+<ftui-view-stage>
 
-    <ftui-grid-tile row="1" col="1" height="10" width="1" shape="round">
-      <ftui-column>
-        <ftui-tab view="View1" direction="vertical" active>
-          <ftui-icon name="home1"></ftui-icon>
-          <ftui-label>Home</ftui-label>
-        </ftui-tab>
-        <ftui-tab view="View2" direction="vertical">
-          <ftui-icon name="music"></ftui-icon>
-          <ftui-label>Music</ftui-label>
-        </ftui-tab>
-        <ftui-tab view="View3">
-          <ftui-icon name="feed"></ftui-icon>
-        </ftui-tab>
-        <ftui-tab view="View4">
-          <ftui-icon name="lightbulb"></ftui-icon>
-        </ftui-tab>
-        <ftui-tab view="View5">
-          <ftui-icon name="bath"></ftui-icon>
-        </ftui-tab>
-        <ftui-tab view="View6">
-          <ftui-icon name="bath"></ftui-icon>
-        </ftui-tab>
-      </ftui-column>
-    </ftui-grid-tile>
+  <ftui-view id="view-1">
 
-    <ftui-tab-view id="View1">
-      <ftui-grid-tile row="1" col="2" height="2" width="2" shape="round" color="primary">
-        <ftui-clock format="ee" class="size-5"></ftui-clock>
-        <ftui-clock format="DD" class="size-8"></ftui-clock>
-      </ftui-grid-tile>
+    <ftui-view-toolbar>
+      <ftui-image src="img/favicon-96x96.png" height="50px" width="50px" slot="start" onClick="window.location.reload();"></ftui-image>
+      <ftui-label color="white">SmartHeim</ftui-label>
+    </ftui-view-toolbar>
 
-      <ftui-grid-tile row="1" col="4" height="2" width="2" shape="round"
-                      [color]="WCLuft | map('0:ok, 1000:warning, 2000:danger')">
-        <ftui-column width="80%">
-          <ftui-label class="size-5 align-left">CO²</ftui-label>
-          <ftui-label class="size-7 align-left" [text]="WCLuft | part(1) | toInt()"></ftui-label>
-          <ftui-label class="size-0 align-right">ppm</ftui-label>
-        </ftui-column>
-      </ftui-grid-tile>
+    <ftui-view-section>
+      <ftui-label slot="header">Smart Devices</ftui-label>
 
-      <ftui-grid-tile row="3" col="2" height="2" width="2" shape="round">
-        <ftui-knob [value]="THSensorWZ:temperature" width="130" offset-y="10"
-                   type="handle" min="19" max="23" unit="°C" readonly has-value-text></ftui-knob>
-      </ftui-grid-tile>
+      <ftui-view-item target="view-rollladen">
+        <ftui-icon name="window-shutter" color="green" slot="start" invert></ftui-icon>
+        Rollläden
+      </ftui-view-item>
+      <ftui-view-item target="view-konakte">
+        <ftui-icon name="window-open-variant" color="secondary" slot="start" invert></ftui-icon>
+        Tür- und Fensterkontakte
+      </ftui-view-item>
+      <ftui-view-item target="view-hugo">
+        <ftui-icon name="robot-vacuum-cleaner" color="brown" slot="start" invert></ftui-icon>
+        HuGo
+      </ftui-view-item>
+    </ftui-view-section>
 
-      <ftui-grid-tile row="3" col="4" height="2" width="3" shape="round">
-        <ftui-column>
-          <div class="row h-40">
-            <ftui-label>Humidity</ftui-label>
-            <ftui-label class="size-7" [text]="THSensorWZ:humidity">
-              <span slot="end" class="size-0">%</span>
-            </ftui-label>
-          </div>
-          <ftui-chart class="row" width="150px" height="75px">
-            <ftui-chart-data fill log="FileLog_THSensorWZ" spec="4:THSensorWZ.humidity"
-                             [update]="THSensorWZ:state:time"></ftui-chart-data>
-          </ftui-chart>
-          </div>
-      </ftui-grid-tile>
+    <ftui-view-section>
+      <ftui-label slot="header">Info</ftui-label>
+      <ftui-view-item target="view-wetter">
+        <ftui-icon name="weather" color="blue" slot="start" invert></ftui-icon>
+        Wetter
+      </ftui-view-item>
+      <ftui-view-item target="view-kalender">
+        <ftui-icon name="calendar" color="red" slot="start" invert></ftui-icon>
+        Kalender
+      </ftui-view-item>
+      <ftui-view-item target="view-telefon">
+        <ftui-icon name="phone" color="yellow" slot="start" invert></ftui-icon>
+        Telefon
+      </ftui-view-item>
+    </ftui-view-section>
 
-      <ftui-grid-tile row="1" col="6" height="2" width="2" shape="round">
-        <ftui-circlemenu direction="vertical" keep-open>
+    <ftui-view-section [hidden]="DWD:a_count | less('1')">
+      <ftui-label slot="header">Warnungen</ftui-label>
+      <ftui-loop file="templates/view_item_warning.html" from="0" [to]="DWD:a_count | add(-1)"></ftui-loop>
+    </ftui-view-section
 
-          <ftui-icon [name]="ftuitest | part(1) | map('0: window-shutter-open, 35: window-shutter-alert, 80: window-shutter')"
-                     [color]="ftuitest | part(1) | map('5: primary')"
-                     class="size-4"></ftui-icon>
+    <ftui-view-section>
+      <ftui-view-item target="view-einstellungen">
+        <ftui-icon name="cog" color="blue" slot="start" invert></ftui-icon>
+        Einstellungen
+      </ftui-view-item>
+    </ftui-view-section>
 
-                     <ftui-button shape="circle" fill="outline" (value)="ftuitest" states='0'
-                     [color]="ftuitest | map('0: primary, .*: light')">
-                     <ftui-icon name="window-shutter-open"
-                     [color]="ftuitest | part(1) | map('5: primary')"
-                     class="size-4"></ftui-icon>
-                   </ftui-button>
+  </ftui-view>
 
-          <ftui-button-nice get="ftuitest" get-on="0" icon="window-shutter-open"></ftui-button-nice>
+  <ftui-view id="view-rollladen">
+    <ftui-view-toolbar>
+      <ftui-nav-link slot="start"></ftui-nav-link>
+      <ftui-label color="white">Rollläden</ftui-label>
+    </ftui-view-toolbar>
+    <ftui-view-section>
+      <ftui-label slot="header">Alle</ftui-label>
+      <ftui-loop file="templates/view_item_rollladen.html" index="device" list="RollladenAlle,RollladenWohnzimmer"></ftui-loop>
+    </ftui-view-section>
+    <ftui-view-section>
+      <ftui-label slot="header">Einzeln</ftui-label>
+      <ftui-loop file="templates/view_item_rollladen.html" index="device" list="DUOFERN_610B46,DUOFERN_610B39,DUOFERN_61F9C4,DUOFERN_610B38,DUOFERN_6112C6,DUOFERN_6112C0,DUOFERN_6112C8"></ftui-loop>
+    </ftui-view-section>
+  </ftui-view>
 
-          <ftui-button-nice get="ftuitest" get-on="35" icon="window-shutter-alert"></ftui-button-nice>
+  <ftui-view id="view-konakte">
+    <ftui-view-toolbar>
+      <ftui-nav-link slot="start"></ftui-nav-link>
+      <ftui-label color="white">Tür- und Fensterkontakte</ftui-label>
+    </ftui-view-toolbar>
+    <ftui-view-section>
+      <ftui-loop file="templates/view_item_tuerfensterkontakt.html" index="device" list="HM_408B7A,HM_3F39D3,HM_3F3A03,HM_3F4A3C,HM_408C3D,HM_408B06"></ftui-loop>
+    </ftui-view-section>
+  </ftui-view>
 
-          <ftui-button-nice get="ftuitest" get-on="80" icon="window-shutter"></ftui-button-nice>
+  <ftui-view id="view-wetter">
+    <ftui-view-toolbar>
+      <ftui-nav-link slot="start"></ftui-nav-link>
+      <ftui-label color="white">Wetter</ftui-label>
+    </ftui-view-toolbar>
+    <ftui-view-section>
+      <ftui-label slot="header" popup-target="popup-temperature-innen">Temperatur</ftui-label>
+      <ftui-view-item popup-target="popup-temperature-innen">
+        <ftui-label slot="start" popup-target="popup-temperature-innen">Innenraumtemperatur</ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="NIBE_HP_F730:abluftTemp" unit=" °C" popup-target="popup-temperature-innen" slot="end"></ftui-label>
+      </ftui-view-item>
+      <ftui-view-item popup-target="popup-temperature">
+        <ftui-label slot="start" popup-target="popup-temperature">Außentemperatur</ftui-label>
+        <ftui-label [text]="WetterProplanta:fc0_tempMin" unit=" °C -&nbsp;" class="size-0" color="gray" popup-target="popup-temperature"></ftui-label>
+        <ftui-label [text]="WetterProplanta:fc0_tempMax" unit=" °C heute" class="size-0" color="gray" popup-target="popup-temperature"></ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="NIBE_HP_F730:aussenTemp" unit=" °C" slot="end" popup-target="popup-temperature"></ftui-label>
+      </ftui-view-item>
+    </ftui-view-section>
+    <ftui-view-section popup-target="popup-sonnenverlauf">
+      <ftui-label slot="header" popup-target="popup-sonnenverlauf">Tagesverlauf</ftui-label>
+      <ftui-view-item popup-target="popup-sonnenverlauf">
+        <ftui-label slot="start" popup-target="popup-sonnenverlauf">Sonnenaufgang</ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="Sonnenaufgang" unit=" Uhr" slot="end" popup-target="popup-sonnenverlauf"></ftui-label>
+      </ftui-view-item>
+      <ftui-view-item popup-target="popup-sonnenverlauf">
+        <ftui-label slot="start" popup-target="popup-sonnenverlauf">Sonnenunter</ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="Sonnenuntergang" unit=" Uhr" slot="end" popup-target="popup-sonnenverlauf"></ftui-label>
+      </ftui-view-item>
+    </ftui-view-section>
 
-        </ftui-circlemenu>
-      </ftui-grid-tile>
+    <ftui-view-section>
+      <ftui-label slot="header">Wetter aktuell</ftui-label>
+      <ftui-view-item popup-target="popup-rain">
+        <ftui-label slot="start" popup-target="popup-rain">Regen</ftui-label>
+        <ftui-label [text]="Netatmo:rain_day" unit=" mm heute" class="size-0" color="gray" popup-target="popup-rain"></ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:rain" unit=" mm" slot="end" popup-target="popup-rain"></ftui-label>
+      </ftui-view-item>
+      <ftui-view-item popup-target="popup-wind">
+        <ftui-label slot="start" popup-target="popup-wind">Wind</ftui-label>
+        <ftui-label [text]="Netatmo:wind_min" unit=" km/h -&nbsp;" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
+        <ftui-label [text]="Netatmo:wind_max" unit=" km/h heute" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:wind" unit=" km/h" slot="end" popup-target="popup-wind"></ftui-label>
+      </ftui-view-item>
+      <ftui-view-item popup-target="popup-wind">
+        <ftui-label slot="start" popup-target="popup-wind">Windböen</ftui-label>
+        <ftui-label [text]="Netatmo:gust_min" unit=" km/h -&nbsp;" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
+        <ftui-label [text]="Netatmo:gust_max" unit=" km/h heute" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:gust" unit=" km/h" slot="end" popup-target="popup-wind"></ftui-label>
+      </ftui-view-item>
+      <ftui-view-item>
+        <ftui-label slot="start">Luftdruck</ftui-label>
+        <ftui-label [text]="Netatmo:pressure_min" unit=" mBar -&nbsp;" class="size-0" color="gray"></ftui-label>
+        <ftui-label [text]="Netatmo:pressure_max" unit=" mBar heute" class="size-0" color="gray"></ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:pressure" unit=" mBar" slot="end"></ftui-label>
+      </ftui-view-item>
+      <ftui-view-item>
+        <ftui-label slot="start">Luftfeuchtigkeit</ftui-label>
+        <ftui-label [text]="Netatmo:humidity_min" unit=" % -&nbsp;" class="size-0" color="gray"></ftui-label>
+        <ftui-label [text]="Netatmo:humidity_max" unit=" % heute" class="size-0" color="gray"></ftui-label>
+        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:humidity" unit=" %" slot="end"></ftui-label>
+      </ftui-view-item>
+    </ftui-view-section>
+  </ftui-view>
 
-      <ftui-grid-tile row="1" col="8" height="2" width="2" shape="round">
+  <ftui-view id="view-kalender">
+    <ftui-view-toolbar>
+      <ftui-nav-link slot="start"></ftui-nav-link>
+      <ftui-label color="white">Kalender</ftui-label>
+    </ftui-view-toolbar>
+    <ftui-view-section>
+      <ftui-label slot="header">kommende Termine</ftui-label>
+      <ftui-loop file="templates/view_item_kalendereintrag.html" from="1" to="10" padding="3"></ftui-loop>
+    </ftui-view-section>
+  </ftui-view>
 
-      </ftui-grid-tile>
-      <ftui-grid-tile row="1" col="10" height="2" width="2" shape="round">
+  <ftui-view id="view-telefon">
+    <ftui-view-toolbar>
+      <ftui-nav-link slot="start"></ftui-nav-link>
+      <ftui-label color="white">Telefon</ftui-label>
+    </ftui-view-toolbar>
+    <ftui-view-section>
+      <ftui-label slot="header">Anrufe</ftui-label>
+      <ftui-loop file="templates/view_item_call.html" from="1" to="10"></ftui-loop>
+    </ftui-view-section>
+  </ftui-view>
 
-      </ftui-grid-tile>
-      <ftui-grid-tile row="3" col="7" height="2" width="1" shape="round">
+  <ftui-view id="view-hugo">
+    <ftui-view-toolbar>
+      <ftui-nav-link slot="start"></ftui-nav-link>
+      <ftui-label color="white">HuGo</ftui-label>
+    </ftui-view-toolbar>
 
-      </ftui-grid-tile>
-      <ftui-grid-tile row="3" col="8" height="2" width="2" shape="round">
+    <ftui-view-section>
+      <ftui-view-item>
+        <div style="width:100%;display:flex;justify-content:space-between;">
+          <ftui-button [(value)]="HuGo" [fill]="HuGo | map('charging: solid, .*: outline')">
+            <ftui-icon name="plug"></ftui-icon>
+          </ftui-button>
+          <ftui-button [(value)]="HuGo" [fill]="HuGo | map('stop: solid, .*: outline')">
+            <ftui-icon name="stop"></ftui-icon>
+          </ftui-button>
+          <ftui-button [(value)]="HuGo" [fill]="HuGo | map('auto: solid, .*: outline')">
+            <ftui-icon name="magic"></ftui-icon>
+          </ftui-button>
+          <ftui-button [(value)]="HuGo" [fill]="HuGo | map('edge: solid, .*: outline')">
+            <ftui-icon name="retweet"></ftui-icon>
+          </ftui-button>
+          <ftui-button [(value)]="HuGo" [fill]="HuGo | map('spot: solid, .*: outline')">
+            <ftui-icon name="dot-circle-o"></ftui-icon>
+          </ftui-button>
+          <ftui-button [(value)]="HuGo" [fill]="HuGo | map('single_room: solid, .*: outline')">
+            <ftui-icon name="ftui-square-o"></ftui-icon>
+          </ftui-button>
+        </div>
+      </ftui-view-item>
+      <ftui-view-item>
+        <ftui-icon name="hourglass-2" slot="start"></ftui-icon>
+        <div style="display:flex;align-items:center;">
+          Timer:
+          <ftui-dropdown list="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30" (value)="setreading HuGo timer" ></ftui-dropdown>
+          Min.
+        </div>
+        <div slot="end">
+          <ftui-label [hidden]="at_HuGoCharging:TYPE | map('at:false,.*:true')">Rückkehr um</ftui-label>
+          <ftui-label [text]="at_HuGoCharging:TRIGGERTIME_FMT | replace(/\d\d\d\d-\d\d-\d\d\s/g,'')" [hidden]="at_HuGoCharging:TYPE | map('at:false,.*:true')"></ftui-label>
+        </div>
+      </ftui-view-item>
+    </ftui-view-section>
+    <ftui-view-section>
+      <ftui-label slot="header">Info</ftui-label>
+      <ftui-view-item>
+        <ftui-icon slot="start" invert [color]="HuGo:battery | replace(/\d$/g, '') | map('10:primary,9:primary,8:primary,7:primary,6:primary,5:primary,4:primary,3:primary,2:primary,.*:red')" [name]="HuGo:battery | replace(/\d$/g, '') | map('10:battery,9:battery,8:battery,7:battery-3,6:battery-3,5:battery-2,4:battery-2,3:battery-1,2:battery-1,.*:battery-0')"></ftui-icon>
+        Der Akku ist zu&nbsp;
+        <ftui-label [text]="HuGo:battery" style="font-weight:bold" color="primary" unit="%"></ftui-label>
+        &nbsp;geladen
+      </ftui-view-item>
+      <ftui-view-item>
+        <ftui-icon slot="start" invert name="info"></ftui-icon>
+        Der Filter ist zu&nbsp;
+        <ftui-label [text]="HuGo:lifespanFilter | add(-100) | multiply(-1)" style="font-weight:bold" color="primary"  unit="%"></ftui-label>
+        &nbsp;abgenutzt
+      </ftui-view-item>
+      <ftui-view-item>
+        <ftui-icon slot="start" invert name="info"></ftui-icon>
+        Die Hauptbürste ist zu&nbsp;
+        <ftui-label [text]="HuGo:lifespanMainBrush | add(-100) | multiply(-1)" style="font-weight:bold" color="primary"  unit="%"></ftui-label>
+        &nbsp;abgenutzt
+      </ftui-view-item>
+      <ftui-view-item>
+        <ftui-icon slot="start" invert name="info"></ftui-icon>
+        Die Seitenbürsten sind zu&nbsp;
+        <ftui-label [text]="HuGo:lifespanSideBrush | add(-100) | multiply(-1)" style="font-weight:bold" color="primary"  unit="%"></ftui-label>
+        &nbsp;abgenutzt
+      </ftui-view-item>
+    </ftui-view-section>
+  </ftui-view>
 
-      </ftui-grid-tile>
-      <ftui-grid-tile row="3" col="10" height="2" width="2" shape="round">
+  <ftui-view id="view-einstellungen">
+    <ftui-view-toolbar>
+      <ftui-nav-link slot="start"></ftui-nav-link>
+      <ftui-label color="white">Einstellungen</ftui-label>
+    </ftui-view-toolbar>
 
-      </ftui-grid-tile>
-      <ftui-grid-tile row="5" col="2" height="3" width="10" shape="round">
-        <ftui-content file="examples/contents/content-weather.html"></ftui-content>
-      </ftui-grid-tile>
-    </ftui-tab-view>
+    <ftui-view-section>
+      <ftui-label slot="header">Türen & Fenster</ftui-label>
+      <ftui-content file="templates/view_item_einstellung.html" title="Fensterwarnung" description="Benachrichtigungn beim Öffnen eines Fensters oder einer Tür erhalten?" reading="nf_FensterPush" off="inactive" on="active"></ftui-content>
+    </ftui-view-section>
 
-    <ftui-tab-view id="View2">
-      <ftui-grid-tile row="1" col="2" height="5" width="19">
-        <div class="size-10">Tab2</div>
-      </ftui-grid-tile>
-    </ftui-tab-view>
+    <ftui-view-section>
+      <ftui-label slot="header">Rolllädern</ftui-label>
+      <ftui-content file="templates/view_item_einstellung.html" title="AutoShuttersControl" description="Rollladenautomatik global aktivieren." reading="ASC:ascEnable" off="off" on="on"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Rollladensteuerung morgens" description="Sollen die Rollladen automatisch hochfahren?" reading="ASC:ASC_autoShuttersControlMorning" off="off" on="on"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Rollladensteuerung abends" description="Sollen die Rollladen automatisch herunterfahren?" reading="ASC:ASC_autoShuttersControlEvening" off="off" on="on"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer links" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" reading="DUOFERN_610B46:ASC_Ventilate_Window_Open" off="off" on="on"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer Mitte" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" reading="DUOFERN_61F9C4:ASC_Ventilate_Window_Openg" off="off" on="on"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer rechts" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" reading="DUOFERN_610B38:ASC_Ventilate_Window_Open" off="off" on="on"></ftui-content>
+    </ftui-view-section>
 
-    <ftui-tab-view id="View3">
-      <ftui-grid-tile row="1" col="2" height="5" width="9">
-        <div class="size-10">Tab3</div>
-      </ftui-grid-tile>
-    </ftui-tab-view>
+    <ftui-view-section>
+      <ftui-label slot="header">Telefon und Internet</ftui-label>
+      <ftui-content file="templates/view_item_einstellung.html" title="Anrufbenachrichtigung" description="Benachrichtigungn für entgangene Anrufe erhalten?" reading="nf_AnrufEntgangen" off="inactive" on="active"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Anrufbeantworter" description="Benachrichtigungn für neue Nachrichten auf dem Anrufbeantworter erhalten?" reading="nf_Anrufbeantworter" off="inactive" on="active"></ftui-content>
+    </ftui-view-section>
 
-    <ftui-tab-view id="View4">
-      <ftui-grid-tile row="1" col="2" height="5" width="9">
-        <div class="size-10">Tab4</div>
-      </ftui-grid-tile>
-    </ftui-tab-view>
+    <ftui-view-section>
+      <ftui-label slot="header">Wetter</ftui-label>
+      <ftui-content file="templates/view_item_einstellung.html" title="Guten Morgen" description="Benachrichtigungn am Morgen mit Wetterinformationen?" reading="at_GutenMorgen" pipe=" | map('inactive:inactive,.*:active')" off="inactive" on="active"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Windwarnung" description="Benachrichtigungn beistarkem Wind?" reading="nf_Windwarnung" off="inactive" on="active"></ftui-content>
+    </ftui-view-section>
 
-    <ftui-tab-view id="View5">
-      <ftui-grid-tile row="1" col="2" height="5" width="9">
-        <div class="size-10">Tab5</div>
-      </ftui-grid-tile>
-    </ftui-tab-view>
-  </ftui-grid>
+    <ftui-view-section>
+      <ftui-label slot="header">Anwesenheit</ftui-label>
+      <ftui-content file="templates/view_item_einstellung.html" title="Anwesenheitsbenachrichtigung" description="Benachrichtigungn für Anwesenheitsänderungen erhalten?" reading="nf_PresencePush" off="inactive" on="active"></ftui-content>
+    </ftui-view-section>
+
+    <ftui-view-section>
+      <ftui-label slot="header">Kalender</ftui-label>
+      <ftui-content file="templates/view_item_einstellung.html" title="Heute-Benachrichtigung" description="Benachrichtigungn morgens für heute anstehende Termine?" reading="at_KalenderHeute" pipe=" | map('inactive:inactive,.*:active')" off="inactive" on="active"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Morgen-Benachrichtigung" description="Benachrichtigungn abends für morgen anstehende Termine?" reading="at_KalenderMorgen" pipe=" | map('inactive:inactive,.*:active')" off="inactive" on="active"></ftui-content>
+    </ftui-view-section>
+
+    <ftui-view-section>
+      <ftui-label slot="header">Wärmepumpe</ftui-label>
+      <ftui-content file="templates/view_item_einstellung.html" title="Verbindungsstatus" description="Benachrichtigungn wenn die Wärmepumpe offline ist?" reading="nf_NIBE_HP_connectionStatus" off="inactive" on="active"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Benachrichtigungen" description="Benachrichtigungn wenn die Wärmepumpe Nachrichen sendet?" reading="nf_NIBE_HP_notification" off="inactive" on="active"></ftui-content>
+      <ftui-content file="templates/view_item_einstellung.html" title="Software Update" description="Benachrichtigungn wenn für die Wärmepumpe Software Updates verfügbar sind?" reading="nf_NIBE_HP_softwareUpgrade" off="inactive" on="active"></ftui-content>
+    </ftui-view-section>
+
+  </ftui-view>
+
+</ftui-view-stage>
+
+<ftui-content file="templates/popup_wind.html"></ftui-content>
+<ftui-content file="templates/popup_rain.html"></ftui-content>
+<ftui-content file="templates/popup_temperature_innen.html"></ftui-content>
+<ftui-content file="templates/popup_temperature.html"></ftui-content>
+<ftui-content file="templates/popup_sonnenverlauf.html"></ftui-content>
 
 </body>
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<ftui-popup id="popup-temperature" timeout="0" width="100%">
+	<header>Temperatur Verlauf heute</header>
+	<ftui-chart>
+		<ftui-chart-data 
+			point-radius="0" 
+			label="Tagesvorhersage" 
+			color="yellow" 
+			log="myLogProxy" 
+			file="-" 
+			spec="Func:logProxy_proplanta2Plot('WetterProplanta','temp_',$from,$to,0,'day')" 
+			unit="°C">
+		</ftui-chart-data>
+		<ftui-chart-data 
+			point-radius="0" 
+			label="Temperatur" 
+			color="red" 
+			log="FileLog_NIBE_HP_F730" 
+			spec="4:NIBE_HP_F730.aussenTemp(?!_)" 
+			unit="°C"
+			fill>
+		</ftui-chart-data>			 
+	</ftui-chart>
+</ftui-popup>
+
+</html>

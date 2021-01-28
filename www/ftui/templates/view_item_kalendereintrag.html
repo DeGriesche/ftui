@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+		
+<ftui-view-item>
+	<ftui-icon slot="start" [name]="KalenderAnsichtHaus:t_{{index}}_summary | map('Wertstoffhof:industry, Biotonne:globe, Restmüll:trash-o, Gelber Sack:refresh1, Papiermüll:file-o, .*:calendar-o')" [color]="KalenderAnsichtHaus:t_{{index}}_summary | map('Wertstoffhof:green, Biotonne:brown, Restmüll:gray, Gelber Sack:yellow, Papiermüll:blue, .*:black')" invert></ftui-icon>
+	<ftui-label [text]="KalenderAnsichtHaus:t_{{index}}_summary" style="padding: 0 5px;"></ftui-label>
+	<ftui-label [text]="KalenderAnsichtHaus:t_{{index}}_daysleftLong" slot="end"></ftui-label>
+	<div style="display:flex; flex-direction: column;" slot="end">
+		<ftui-label [text]="KalenderAnsichtHaus:t_{{index}}_weekdayname"></ftui-label>
+		<ftui-label [text]="KalenderAnsichtHaus:t_{{index}}_bdate"></ftui-label>
+	</div>
+</ftui-view-item>
+
+</body>
+</html>

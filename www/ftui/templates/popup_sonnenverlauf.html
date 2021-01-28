@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<ftui-popup id="popup-sonnenverlauf" timeout="0" width="100%">
+	<header>Sonnenverlauf Verlauf heute</header>
+
+	<table>
+		<tr>
+			<th></th>
+			<th class="small">Astronomic (-16°)</th>
+			<th class="small">Nautic (-12°)</th>
+			<th class="small">Civil (-6°)</th>
+			<th class="small">Real (0°)</th>
+		</tr>
+		<tr>
+			<td><i class="wi wi-sunrise blue right-space"></i></td>
+			<td><ftui-label [text]="Sonnenaufgang:astronomic" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenaufgang:nautic" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenaufgang:civil" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenaufgang:real" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><i class="wi wi-sunset blue right-space"></i></td>
+			<td><ftui-label [text]="Sonnenuntergang:astronomic" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenuntergang:nautic" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenuntergang:civil" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenuntergang:real" unit=" Uhr"><ftui-label></td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<th>Tag</th>
+			<th>Datum</th>
+			<th>Sonnenaufgang</th>
+			<th>Sonnenuntergang</th>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc0_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc0_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc0_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc0_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc1_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc1_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc1_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc1_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc2_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc2_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc2_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc2_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc3_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc3_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc3_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc3_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc4_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc4_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc4_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc4_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc5_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc5_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc5_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc5_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc6_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc6_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc6_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc6_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc7_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc7_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc7_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc7_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc8_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc8_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc8_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc8_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+		<tr>
+			<td><ftui-label [text]="DWD:fc9_weekday"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc9_date"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc9_SunRise" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="DWD:fc9_SunSet" unit=" Uhr"><ftui-label></td>
+		</tr>
+	</table>
+</ftui-popup>
+
+</html>

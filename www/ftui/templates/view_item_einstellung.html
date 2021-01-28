@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+		
+<ftui-view-item>
+	<span slot="start">{{title}}</span>
+	<span class="size-0">{{description}}</span>
+	<ftui-checkbox (value)="{{reading}}" [value]="{{reading}}{{pipe}}" states='{{off}},{{on}}' slot="end"></ftui-checkbox>
+</ftui-view-item>
+
+</body>
+</html>

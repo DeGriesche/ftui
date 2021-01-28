@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+		
+<ftui-view-item style="background-color: var(--danger-color);" popup-target="popup-warning-{{index}}">
+	<ftui-icon [name]="DWD:a_{{index}}_eventGroup | map('THUNDERSTORM:sunny-thunderstorm, WIND:windy, TORNADO:wind, RAIN:rainy1, HAIL:snowy1, SNOWFALL:snowy2, SNOWDRIFT:snowy2, FOG:weather, FROST:snowflake-o, GLAZE:sunny-rain, THAW:snowflake, POWERLINEVIBRATION:bolt, UV:sun, HEAT:thermometer1')" color="white" slot="start" invert popup-target="popup-warning-{{index}}"></ftui-icon>
+	<ftui-badge color="warning" style="display:flex;flex-direction:column;border-radius:5px;margin:4px;position:relative;" popup-target="popup-warning-{{index}}" slot="end" [hidden]="DWD:a_{{index}}_altitude | less('1')">
+		<ftui-label text="▲" style="text-align:center;" popup-target="popup-warning-{{index}}"></ftui-label>
+		<ftui-label [text]="DWD:a_{{index}}_altitude" popup-target="popup-warning-{{index}}" unit="m"></ftui-label>
+	</ftui-badge>
+	<div style="background-color:var(--lightred);border-radius:5px;padding:0 4px;" slot="end">
+		<div style="display: flex;justify-content:flex-end">
+			<ftui-label color="white" class="size-1" popup-target="popup-warning-{{index}}">von&nbsp;</ftui-label>
+			<ftui-label [text]="DWD:a_{{index}}_onset | toDate() | format('DD.MM hh:mm')" color="white" class="size-1" popup-target="popup-warning-{{index}}"></ftui-label>
+		</div>
+		<div style="display: flex;justify-content:flex-end">
+			<ftui-label color="white" class="size-1" popup-target="popup-warning-{{index}}">bis&nbsp;</ftui-label>
+			<ftui-label [text]="DWD:a_{{index}}_expires | toDate() | format('DD.MM hh:mm')" color="white" class="size-1" popup-target="popup-warning-{{index}}"></ftui-label>
+		</div>
+	</div>
+	<ftui-label [text]="DWD:a_{{index}}_headline" color="white" popup-target="popup-warning-{{index}}"></ftui-label>
+</ftui-view-item>
+
+<ftui-popup id="popup-warning-{{index}}" timeout="0" width="95%" height="170px">
+	<header><ftui-label [text]="DWD:a_{{index}}_headline"></ftui-label></header>
+	<div style="display: flex;flex-direction:column;justify-content:flex-start;margin:0 10px;">
+		<div>
+			Von
+			<ftui-label [text]="DWD:a_{{index}}_onset | toDate() | format('DD.MM hh:mm')"></ftui-label>
+			&nbsp;bis&nbsp;
+			<ftui-label [text]="DWD:a_{{index}}_expires | toDate() | format('DD.MM hh:mm')"></ftui-label>
+			&nbsp;ab&nbsp;
+			<ftui-label [text]="DWD:a_{{index}}_altitude"></ftui-label>
+			&nbsp;Höhenmetern
+		</div>
+		<ftui-label class="size-3" [text]="DWD:a_{{index}}_description" stype="font-weight:bold"></ftui-label>
+	</div>
+</ftui-popup>
+
+</body>
+</html>
