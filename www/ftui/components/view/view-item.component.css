@@ -6,7 +6,7 @@
 
 :host(:hover:not([target=''])) {
   cursor: pointer;
-  background-color: var(--view-toolbar-background-color);
+  background-color: var(--view-item-active-background-color);
 }
 
 :host(:last-child) .content {

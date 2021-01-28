@@ -70,6 +70,7 @@
   --view-background-color: var(--gray95);
   --view-footer-color: var(--white);
   --view-item-background-color: var(--white);
+  --view-item-active-background-color: var(--gray75);
   --view-border-color: rgb(200, 199, 204);
 
   --page-background-color: var(--gray90);
