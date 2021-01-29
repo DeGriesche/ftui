@@ -64,57 +64,29 @@
 <ftui-view-stage>
 
   <ftui-view id="view-1">
-
     <ftui-view-toolbar>
       <ftui-image src="img/favicon-96x96.png" height="50px" width="50px" slot="start" onClick="window.location.reload();"></ftui-image>
       <ftui-label color="white">SmartHeim</ftui-label>
     </ftui-view-toolbar>
-
     <ftui-view-section>
       <ftui-label slot="header">Smart Devices</ftui-label>
-
-      <ftui-view-item target="view-rollladen">
-        <ftui-icon name="window-shutter" color="green" slot="start" invert></ftui-icon>
-        Rollläden
-      </ftui-view-item>
-      <ftui-view-item target="view-konakte">
-        <ftui-icon name="window-open-variant" color="secondary" slot="start" invert></ftui-icon>
-        Tür- und Fensterkontakte
-      </ftui-view-item>
-      <ftui-view-item target="view-hugo">
-        <ftui-icon name="robot-vacuum-cleaner" color="brown" slot="start" invert></ftui-icon>
-        HuGo
-      </ftui-view-item>
+      <ftui-content file="templates/view_item_menu.html" label="Rollläden" icon="window-shutter" color="green" target="view-rollladen"></ftui-content>
+      <ftui-content file="templates/view_item_menu.html" label="Tür- und Fensterkontakte" icon="window-open-variant" color="secondary" target="view-tuerfensterkontakte"></ftui-content>
+      <ftui-content file="templates/view_item_menu.html" label="HuGo" icon="robot-vacuum-cleaner" color="brown" target="view-hugo"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Info</ftui-label>
-      <ftui-view-item target="view-wetter">
-        <ftui-icon name="weather" color="blue" slot="start" invert></ftui-icon>
-        Wetter
-      </ftui-view-item>
-      <ftui-view-item target="view-kalender">
-        <ftui-icon name="calendar" color="red" slot="start" invert></ftui-icon>
-        Kalender
-      </ftui-view-item>
-      <ftui-view-item target="view-telefon">
-        <ftui-icon name="phone" color="yellow" slot="start" invert></ftui-icon>
-        Telefon
-      </ftui-view-item>
+      <ftui-content file="templates/view_item_menu.html" label="Wetter" icon="weather" color="blue" target="view-wetter"></ftui-content>
+      <ftui-content file="templates/view_item_menu.html" label="Kalender" icon="calendar" color=redbrown" target="view-kalender"></ftui-content>
+      <ftui-content file="templates/view_item_menu.html" label="Telefon" icon="phone" color="yellow" target="view-telefon"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section [hidden]="DWD:a_count | less('1')">
       <ftui-label slot="header">Warnungen</ftui-label>
       <ftui-loop file="templates/view_item_warning.html" from="0" [to]="DWD:a_count | add(-1)"></ftui-loop>
-    </ftui-view-section
-
-    <ftui-view-section>
-      <ftui-view-item target="view-einstellungen">
-        <ftui-icon name="cog" color="blue" slot="start" invert></ftui-icon>
-        Einstellungen
-      </ftui-view-item>
     </ftui-view-section>
-
+    <ftui-view-section>
+      <ftui-content file="templates/view_item_menu.html" label="Einstellungen" icon="cog" color="blue" target="view-einstellungen"></ftui-content>
+    </ftui-view-section>
   </ftui-view>
 
   <ftui-view id="view-rollladen">
@@ -132,7 +104,7 @@
     </ftui-view-section>
   </ftui-view>
 
-  <ftui-view id="view-konakte">
+  <ftui-view id="view-tuerfensterkontakte">
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Tür- und Fensterkontakte</ftui-label>
@@ -194,7 +166,6 @@
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">HuGo</ftui-label>
     </ftui-view-toolbar>
-
     <ftui-view-section>
       <ftui-view-item>
         <div style="width:100%;display:flex;justify-content:space-between;">
@@ -265,12 +236,10 @@
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Einstellungen</ftui-label>
     </ftui-view-toolbar>
-
     <ftui-view-section>
       <ftui-label slot="header">Türen & Fenster</ftui-label>
       <ftui-content file="templates/view_item_einstellung.html" title="Fensterwarnung" description="Benachrichtigungn beim Öffnen eines Fensters oder einer Tür erhalten?" reading="nf_FensterPush" off="inactive" on="active"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Rolllädern</ftui-label>
       <ftui-content file="templates/view_item_einstellung.html" title="AutoShuttersControl" description="Rollladenautomatik global aktivieren." reading="ASC:ascEnable" off="off" on="on"></ftui-content>
@@ -280,37 +249,31 @@
       <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer Mitte" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" reading="DUOFERN_61F9C4:ASC_Ventilate_Window_Openg" off="off" on="on"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer rechts" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" reading="DUOFERN_610B38:ASC_Ventilate_Window_Open" off="off" on="on"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Telefon und Internet</ftui-label>
       <ftui-content file="templates/view_item_einstellung.html" title="Anrufbenachrichtigung" description="Benachrichtigungn für entgangene Anrufe erhalten?" reading="nf_AnrufEntgangen" off="inactive" on="active"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Anrufbeantworter" description="Benachrichtigungn für neue Nachrichten auf dem Anrufbeantworter erhalten?" reading="nf_Anrufbeantworter" off="inactive" on="active"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Wetter</ftui-label>
       <ftui-content file="templates/view_item_einstellung.html" title="Guten Morgen" description="Benachrichtigungn am Morgen mit Wetterinformationen?" reading="at_GutenMorgen" pipe=" | map('inactive:inactive,.*:active')" off="inactive" on="active"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Windwarnung" description="Benachrichtigungn beistarkem Wind?" reading="nf_Windwarnung" off="inactive" on="active"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Anwesenheit</ftui-label>
       <ftui-content file="templates/view_item_einstellung.html" title="Anwesenheitsbenachrichtigung" description="Benachrichtigungn für Anwesenheitsänderungen erhalten?" reading="nf_PresencePush" off="inactive" on="active"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Kalender</ftui-label>
       <ftui-content file="templates/view_item_einstellung.html" title="Heute-Benachrichtigung" description="Benachrichtigungn morgens für heute anstehende Termine?" reading="at_KalenderHeute" pipe=" | map('inactive:inactive,.*:active')" off="inactive" on="active"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Morgen-Benachrichtigung" description="Benachrichtigungn abends für morgen anstehende Termine?" reading="at_KalenderMorgen" pipe=" | map('inactive:inactive,.*:active')" off="inactive" on="active"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Wärmepumpe</ftui-label>
       <ftui-content file="templates/view_item_einstellung.html" title="Verbindungsstatus" description="Benachrichtigungn wenn die Wärmepumpe offline ist?" reading="nf_NIBE_HP_connectionStatus" off="inactive" on="active"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Benachrichtigungen" description="Benachrichtigungn wenn die Wärmepumpe Nachrichen sendet?" reading="nf_NIBE_HP_notification" off="inactive" on="active"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Software Update" description="Benachrichtigungn wenn für die Wärmepumpe Software Updates verfügbar sind?" reading="nf_NIBE_HP_softwareUpgrade" off="inactive" on="active"></ftui-content>
     </ftui-view-section>
-
   </ftui-view>
 
 </ftui-view-stage>
