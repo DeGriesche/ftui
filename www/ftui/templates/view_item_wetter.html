@@ -7,8 +7,8 @@
 
 <ftui-view-item popup-target="{{popup}}">
 	<ftui-label slot="start" popup-target="{{popup}}">{{label}}</ftui-label>
-	<ftui-label [text]="{{device-stat}}:{{reading-min}}" unit="&nbsp;-&nbsp;" class="size-0" color="gray" popup-target="{{popup}}" style="{{min-style}}"></ftui-label>
-	<ftui-label [text]="{{device-stat}}:{{reading-max}}" unit=" {{unit}} heute" class="size-0" color="gray" popup-target="{{popup}}" style="{{max-style}}"></ftui-label>
+	<ftui-label [text]="{{devicestat}}:{{readingmin}}" unit="&nbsp;-&nbsp;" class="size-0" color="gray" popup-target="{{popup}}" style="{{minstyle}}"></ftui-label>
+	<ftui-label [text]="{{devicestat}}:{{readingmax}}" unit=" {{unit}} heute" class="size-0" color="gray" popup-target="{{popup}}" style="{{maxstyle}}"></ftui-label>
 	<ftui-label style="font-weight:bold;" color="primary" [text]="{{device}}:{{reading}}" unit=" {{unit}}" slot="end" popup-target="{{popup}}"></ftui-label>
 </ftui-view-item>
 
