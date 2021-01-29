@@ -6,7 +6,7 @@
 <body>
 		
 <ftui-view-item style="background-color: var(--danger-color);" popup-target="popup-warning-{{index}}">
-	<ftui-icon [name]="DWD:a_{{index}}_eventGroup | map('THUNDERSTORM:sunny-thunderstorm, WIND:windy, TORNADO:wind, RAIN:rainy1, HAIL:snowy1, SNOWFALL:snowy2, SNOWDRIFT:snowy2, FOG:weather, FROST:snowflake-o, GLAZE:sunny-rain, THAW:snowflake, POWERLINEVIBRATION:bolt, UV:sun, HEAT:thermometer1')" color="white" slot="start" invert popup-target="popup-warning-{{index}}"></ftui-icon>
+	<ftui-icon [name]="DWD:a_{{index}}_eventGroup | map('THUNDERSTORM:sunny-thunderstorm, WIND:windy, TORNADO:wind, RAIN:rainy1, HAIL:snowy1, SNOWFALL:snowy2, SNOWDRIFT:snowy2, FOG:weather, FROST:snowflake-o, GLAZE:sunny-rain, THAW:snowflake, POWERLINEVIBRATION:bolt, UV:sun, HEAT:thermometer1')" color="warning" slot="start" invert popup-target="popup-warning-{{index}}"></ftui-icon>
 	<ftui-badge color="warning" style="display:flex;flex-direction:column;border-radius:5px;margin:4px;position:relative;" popup-target="popup-warning-{{index}}" slot="end" [hidden]="DWD:a_{{index}}_altitude | less('1')">
 		<ftui-label text="▲" style="text-align:center;" popup-target="popup-warning-{{index}}"></ftui-label>
 		<ftui-label [text]="DWD:a_{{index}}_altitude" popup-target="popup-warning-{{index}}" unit="m"></ftui-label>
