@@ -6,9 +6,11 @@
 <body>
 
 <ftui-view-item popup-target="{{popup}}">
-	<ftui-label slot="start" popup-target="{{popup}}">{{label}}</ftui-label>
-	<ftui-label [text]="{{defMin}}" unit="&nbsp;-&nbsp;" class="size-0" color="gray" popup-target="{{popup}}" style="{{minstyle}}"></ftui-label>
-	<ftui-label [text]="{{defMax}}" unit=" {{unit}} heute" class="size-0" color="gray" popup-target="{{popup}}" style="{{maxstyle}}"></ftui-label>
+	<ftui-icon name="{{icon}}" color="{{color}}" slot="start" popup-target="{{popup}}"></ftui-icon>
+	<ftui-label popup-target="{{popup}}">{{label}}</ftui-label>
+	<ftui-label [text]="{{defMin}}" unit="&nbsp;-&nbsp;" color="gray" popup-target="{{popup}}" style="{{minstyle}}" slot="end"></ftui-label>
+	<ftui-label [text]="{{defMax}}" unit=" {{unit}} heute" color="gray" popup-target="{{popup}}" style="{{maxstyle}}" slot="end"></ftui-label>
+	<b slot="end">&nbsp;|&nbsp;</b>
 	<ftui-label style="font-weight:bold;" color="primary" [text]="def" unit=" {{unit}}" slot="end" popup-target="{{popup}}"></ftui-label>
 </ftui-view-item>
 

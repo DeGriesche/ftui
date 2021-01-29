@@ -149,28 +149,21 @@
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header" popup-target="popup-temperature-innen">Temperatur</ftui-label>
-      <ftui-content file="templates/view_item_wetter.html" label="Innenraumtemperatur" def="NIBE_HP_F730:abluftTemp" minstyle="display:none" maxstyle="display:none" unit="°C" popup="popup-temperature-innen"></ftui-content>
-      <ftui-content file="templates/view_item_wetter.html" label="Außentemperatur" def="NIBE_HP_F730:aussenTemp" defMin="WetterProplanta:fc0_tempMin" defMax="WetterProplanta:fc0_tempMax" unit="°C" popup="popup-temperature"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Innenraumtemperatur" icon="thermometer-2" color="red" def="NIBE_HP_F730:abluftTemp" minstyle="display:none" maxstyle="display:none" unit="°C" popup="popup-temperature-innen"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Außentemperatur" icon="thermometer-2" color="red" def="NIBE_HP_F730:aussenTemp" defMin="WetterProplanta:fc0_tempMin" defMax="WetterProplanta:fc0_tempMax" unit="°C" popup="popup-temperature"></ftui-content>
     </ftui-view-section>
     <ftui-view-section popup-target="popup-sonnenverlauf">
       <ftui-label slot="header" popup-target="popup-sonnenverlauf">Tagesverlauf</ftui-label>
-      <ftui-view-item popup-target="popup-sonnenverlauf">
-        <ftui-label slot="start" popup-target="popup-sonnenverlauf">Sonnenaufgang</ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="Sonnenaufgang" unit=" Uhr" slot="end" popup-target="popup-sonnenverlauf"></ftui-label>
-      </ftui-view-item>
-      <ftui-view-item popup-target="popup-sonnenverlauf">
-        <ftui-label slot="start" popup-target="popup-sonnenverlauf">Sonnenunter</ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="Sonnenuntergang" unit=" Uhr" slot="end" popup-target="popup-sonnenverlauf"></ftui-label>
-      </ftui-view-item>
+      <ftui-content file="templates/view_item_wetter.html" label="Sonnenaufgang" icon="sunrise-2" color="yellow" def="Sonnenaufgang" minstyle="display:none" maxstyle="display:none" unit="Uhr" popup="popup-sonnenverlauf"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Sonnenunter" icon="sunset-2" color="yellow" def="Sonnenunter" minstyle="display:none" maxstyle="display:none" unit="Uhr" popup="popup-sonnenverlauf"></ftui-content>
     </ftui-view-section>
-
     <ftui-view-section>
       <ftui-label slot="header">Wetter aktuell</ftui-label>
-      <ftui-content file="templates/view_item_wetter.html" label="Regen" def="Netatmo:rain" defMin="Netatmo:wind_min" defMax="Netatmo:rain_day" unit="mm" minstyle="display:none" popup="popup-rain"></ftui-content>
-      <ftui-content file="templates/view_item_wetter.html" label="Wind" def="Netatmo:wind" defMin="Netatmo:wind_min" defMax="Netatmo:wind_max" unit="km/h" popup="popup-wind"></ftui-content>
-      <ftui-content file="templates/view_item_wetter.html" label="Windböen" def="Netatmo:gust" defMin="Netatmo:gust_min" defMax="Netatmo:gust_max" unit="km/h" popup="popup-wind"></ftui-content>
-      <ftui-content file="templates/view_item_wetter.html" label="Luftdruck" def="Netatmo:pressure" defMin="Netatmo:pressure_min" defMax="Netatmo:pressure_max" unit="mBar"></ftui-content>
-      <ftui-content file="templates/view_item_wetter.html" label="Luftfeuchtigkeit" def="Netatmo:humidity" defMin="Netatmo:humidity_min" defMax="Netatmo:humidity_max" unit="%"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Regen" icon="rainy1" color="blue" def="Netatmo:rain" defMin="Netatmo:wind_min" defMax="Netatmo:rain_day" unit="mm" minstyle="display:none" popup="popup-rain"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Wind" icon="wind" color="black" def="Netatmo:wind" defMin="Netatmo:wind_min" defMax="Netatmo:wind_max" unit="km/h" popup="popup-wind"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Windböen" icon="lines" color="black" def="Netatmo:gust" defMin="Netatmo:gust_min" defMax="Netatmo:gust_max" unit="km/h" popup="popup-wind"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Luftdruck" icon="barometer" color="blue" def="Netatmo:pressure" defMin="Netatmo:pressure_min" defMax="Netatmo:pressure_max" unit="mBar"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Luftfeuchtigkeit" icon="humidity" color="blue" def="Netatmo:humidity" defMin="Netatmo:humidity_min" defMax="Netatmo:humidity_max" unit="%"></ftui-content>
     </ftui-view-section>
   </ftui-view>
 
