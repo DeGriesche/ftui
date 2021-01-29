@@ -149,16 +149,8 @@
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header" popup-target="popup-temperature-innen">Temperatur</ftui-label>
-      <ftui-view-item popup-target="popup-temperature-innen">
-        <ftui-label slot="start" popup-target="popup-temperature-innen">Innenraumtemperatur</ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="NIBE_HP_F730:abluftTemp" unit=" °C" popup-target="popup-temperature-innen" slot="end"></ftui-label>
-      </ftui-view-item>
-      <ftui-view-item popup-target="popup-temperature">
-        <ftui-label slot="start" popup-target="popup-temperature">Außentemperatur</ftui-label>
-        <ftui-label [text]="WetterProplanta:fc0_tempMin" unit=" °C -&nbsp;" class="size-0" color="gray" popup-target="popup-temperature"></ftui-label>
-        <ftui-label [text]="WetterProplanta:fc0_tempMax" unit=" °C heute" class="size-0" color="gray" popup-target="popup-temperature"></ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="NIBE_HP_F730:aussenTemp" unit=" °C" slot="end" popup-target="popup-temperature"></ftui-label>
-      </ftui-view-item>
+      <ftui-content file="templates/view_item_wetter.html" label="Außentemperatur" device="NIBE_HP_F730" reading="abluftTemp" style-min="display:none" style-max="display:none" unit="°C" popup="popup-temperature-innen"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Außentemperatur" device="NIBE_HP_F730" device-stat="WetterProplanta" reading="aussenTemp" reading-min="fc0_tempMin" reading-max="fc0_tempMax" unit="°C" popup="popup-temperature"></ftui-content>
     </ftui-view-section>
     <ftui-view-section popup-target="popup-sonnenverlauf">
       <ftui-label slot="header" popup-target="popup-sonnenverlauf">Tagesverlauf</ftui-label>
@@ -174,38 +166,11 @@
 
     <ftui-view-section>
       <ftui-label slot="header">Wetter aktuell</ftui-label>
-      <ftui-content file="templates/view_item_wetter.html" label="Regen" device="Netatmo" reading="rain" reading-max="rain_day" unit="mm" popup="popup-rain"></ftui-content>
-      <ftui-content file="templates/view_item_wetter.html" label="Wind" device="Netatmo" reading="wind" reading-min="wind_min" reading-max="wind_max" unit="km/h" popup="popup-wind"></ftui-content>
-      <ftui-content file="templates/view_item_wetter.html" label="Windböen" device="Netatmo" reading="gust" reading-min="gust_min" reading-max="gust_max" unit="km/h" popup="popup-wind"></ftui-content>
-      <ftui-view-item popup-target="popup-rain">
-        <ftui-label slot="start" popup-target="popup-rain">Regen</ftui-label>
-        <ftui-label [text]="Netatmo:rain_day" unit=" mm heute" class="size-0" color="gray" popup-target="popup-rain"></ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:rain" unit=" mm" slot="end" popup-target="popup-rain"></ftui-label>
-      </ftui-view-item>
-      <ftui-view-item popup-target="popup-wind">
-        <ftui-label slot="start" popup-target="popup-wind">Wind</ftui-label>
-        <ftui-label [text]="Netatmo:wind_min" unit=" km/h -&nbsp;" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
-        <ftui-label [text]="Netatmo:wind_max" unit=" km/h heute" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:wind" unit=" km/h" slot="end" popup-target="popup-wind"></ftui-label>
-      </ftui-view-item>
-      <ftui-view-item popup-target="popup-wind">
-        <ftui-label slot="start" popup-target="popup-wind">Windböen</ftui-label>
-        <ftui-label [text]="Netatmo:gust_min" unit=" km/h -&nbsp;" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
-        <ftui-label [text]="Netatmo:gust_max" unit=" km/h heute" class="size-0" color="gray" popup-target="popup-wind"></ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:gust" unit=" km/h" slot="end" popup-target="popup-wind"></ftui-label>
-      </ftui-view-item>
-      <ftui-view-item>
-        <ftui-label slot="start">Luftdruck</ftui-label>
-        <ftui-label [text]="Netatmo:pressure_min" unit=" mBar -&nbsp;" class="size-0" color="gray"></ftui-label>
-        <ftui-label [text]="Netatmo:pressure_max" unit=" mBar heute" class="size-0" color="gray"></ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:pressure" unit=" mBar" slot="end"></ftui-label>
-      </ftui-view-item>
-      <ftui-view-item>
-        <ftui-label slot="start">Luftfeuchtigkeit</ftui-label>
-        <ftui-label [text]="Netatmo:humidity_min" unit=" % -&nbsp;" class="size-0" color="gray"></ftui-label>
-        <ftui-label [text]="Netatmo:humidity_max" unit=" % heute" class="size-0" color="gray"></ftui-label>
-        <ftui-label style="font-weight:bold;" color="primary" [text]="Netatmo:humidity" unit=" %" slot="end"></ftui-label>
-      </ftui-view-item>
+      <ftui-content file="templates/view_item_wetter.html" label="Regen" device="Netatmo" device-stat="Netatmo" reading="rain" reading-max="rain_day" unit="mm" min-style="display:none" popup="popup-rain"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Wind" device="Netatmo" device-stat="Netatmo" reading="wind" reading-min="wind_min" reading-max="wind_max" unit="km/h" popup="popup-wind"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Windböen" device="Netatmo" device-stat="Netatmo" reading="gust" reading-min="gust_min" reading-max="gust_max" unit="km/h" popup="popup-wind"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Luftdruck" device="Netatmo" device-stat="Netatmo" reading="pressure" reading-min="pressure_min" reading-max="pressure_max" unit="mBar"></ftui-content>
+      <ftui-content file="templates/view_item_wetter.html" label="Luftfeuchtigkeit" device="Netatmo" device-stat="Netatmo" reading="humidity" reading-min="humidity_min" reading-max="humidity_max" unit="%"></ftui-content>
     </ftui-view-section>
   </ftui-view>
 
