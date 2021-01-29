@@ -6,7 +6,7 @@
 <body>
 		
 <ftui-view-item>
-	<ftui-icon slot="start" [name]="FritzBox6490CallList:{{index}}-state | replace('=>','gt') | replace('<=','lt') | map('gt:phone_call_end_in, gt X:phone_missed_in, gt ((o)):phone_ring, gt [=]:phone_ring_in, gt O_O:phone_answering, lt: phone_call_end_out, lt X:phone_missed_out')" [color]="FritzBox6490CallList:{{index}}-state | replace('=>','gt') | replace('<=','lt') | map('gt:primary, gt X:red, gt ((o)):red, gt [=]:red, gt O_O:warning, lt:primary, lt X:red')" invert></ftui-icon>
+	<ftui-icon slot="start" [name]="FritzBox6490CallList:{{index}}-state | replace('=>','gt') | replace('<=','lt') | map('gt:phone_call_end_in, gt X:phone_missed_in, gt ((o)):phone_ring, gt [=]:phone_ring_in, gt O_O:phone_answering, lt: phone_call_end_out, lt X:phone_missed_out')" [color]="FritzBox6490CallList:{{index}}-state | replace('=>','gt') | replace('<=','lt') | map('gt:primary, gt X:red, gt ((o)):red, gt [=]:red, gt O_O:warning, lt:primary, lt X:red')"></ftui-icon>
 	<ftui-label [text]="FritzBox6490CallList:{{index}}-name" style="padding: 0 5px;"></ftui-label>
 	<ftui-label [text]="FritzBox6490CallList:{{index}}-number" unit="&nbsp;" slot="end"></ftui-label>
 	<div style="display:flex; flex-direction: column;" slot="end">
