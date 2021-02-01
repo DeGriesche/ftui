@@ -24,10 +24,10 @@
 		</tr>
 		<tr>
 			<td><i class="wi wi-sunset blue right-space"></i></td>
-			<td><ftui-label [text]="Sonnenuntergang:astronomic" unit=" Uhr"><ftui-label></td>
-			<td><ftui-label [text]="Sonnenuntergang:nautic" unit=" Uhr"><ftui-label></td>
-			<td><ftui-label [text]="Sonnenuntergang:civil" unit=" Uhr"><ftui-label></td>
-			<td><ftui-label [text]="Sonnenuntergang:real" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenuntergang:astronomic | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenuntergang:nautic | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenuntergang:civil | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
+			<td><ftui-label [text]="Sonnenuntergang:real | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
 		</tr>
 	</table>
 
