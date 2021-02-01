@@ -13,3 +13,10 @@
 
   --view-item-active-background-color: var(--gray75);
 }
+
+table.alternating tr:nth-child(even) {
+    background: #CCC;
+}
+table.alternating tr:nth-child(odd) {
+    background: #FFF;
+}
