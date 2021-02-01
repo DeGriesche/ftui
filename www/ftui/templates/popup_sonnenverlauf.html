@@ -10,20 +10,21 @@
 
 	<table class="alternating">
 		<tr>
+			<th></th>
 			<th class="small">Astronomic (-16°)</th>
 			<th class="small">Nautic (-12°)</th>
 			<th class="small">Civil (-6°)</th>
 			<th class="small">Real (0°)</th>
 		</tr>
 		<tr>
-			<td><i class="wi wi-sunrise blue right-space"></i></td>
+			<td><ftui-icon name="sunrise-2"></ftui-icon></td>
 			<td><ftui-label [text]="Sonnenaufgang:astronomic | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
 			<td><ftui-label [text]="Sonnenaufgang:nautic | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
 			<td><ftui-label [text]="Sonnenaufgang:civil | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
 			<td><ftui-label [text]="Sonnenaufgang:real | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
 		</tr>
 		<tr>
-			<td><i class="wi wi-sunset blue right-space"></i></td>
+			<td><ftui-icon name="sunset-2"></ftui-icon></td>
 			<td><ftui-label [text]="Sonnenuntergang:astronomic | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
 			<td><ftui-label [text]="Sonnenuntergang:nautic | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
 			<td><ftui-label [text]="Sonnenuntergang:civil | replace(/:\d\d$/g,'')" unit=" Uhr"><ftui-label></td>
