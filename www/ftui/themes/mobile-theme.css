@@ -18,7 +18,7 @@
   --gray-trans: rgba(40, 40, 40, 0.5);
   --orange: #aa6900;
   --red: #ad3333;
-  --lightred: rgb(219, 72, 70);
+  --lightered: rgb(219, 72, 70);
   --tomato: rgb(238, 92, 66);
   --green: #32a054;
   --seagreen: #365a38;
@@ -94,8 +94,10 @@
   --slider-handle-shadow: 1px 1px 4px #ddd;
   --slider-handle-border: 1px solid #f2f2f2;
 
-  --slider-scrollbar-thumb: rgba(0, 0, 0, 0.5);
-  --slider-scrollbar-track: var(--white);
+  --swiper-scrollbar-thumb: rgba(0, 0, 0, 0.5);
+  --swiper-scrollbar-track: var(--white);
+  --swiper-dot: var(--light-color);
+  --swiper-dot-active: var(--info-color);
 }
 
 [invert][color] {
