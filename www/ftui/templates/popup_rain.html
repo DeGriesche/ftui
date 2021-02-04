@@ -26,7 +26,16 @@
 			spec="4:Netatmo.rain(?!_)" 
 			unit="mm"
 			fill>
-		</ftui-chart-data>			 
+		</ftui-chart-data>
+		<ftui-chart-data 
+			point-radius="0" 
+			label="Regen pro Stunde" 
+			color="blue" 
+			log="FileLog_Netatmo" 
+			spec="4:Netatmo.rain_hour" 
+			unit="mm"
+			fill>
+		</ftui-chart-data>
 	</ftui-chart>
 </ftui-popup>
 
