@@ -15,6 +15,7 @@ class FtuiSwiper extends FtuiElement {
   constructor(properties) {
 
     super(Object.assign(FtuiSwiper.properties, properties));
+    this.currentIndex = 0;
     this.container = this.shadowRoot.querySelector('.slides');
     this.slotMain = this.shadowRoot.querySelector('slot');
     this.slotDots = this.shadowRoot.querySelector('slot[name=dots]');
@@ -35,7 +36,9 @@ class FtuiSwiper extends FtuiElement {
     return {
       value: '',
       debounce: 200,
-      dots: false
+      dots: false,
+      autoPlay: false,
+      interval: 5,
     };
   }
 
@@ -43,13 +46,18 @@ class FtuiSwiper extends FtuiElement {
     return [...this.convertToAttributes(FtuiSwiper.properties), ...super.observedAttributes];
   }
 
+  get slides() {
+    return this.slotMain.assignedElements();
+  }
+
   onConnected() {
     this.initObservers();
     this.createDots();
+    this.checkInterval();
   }
 
   initObservers() {
-    this.slotMain.assignedElements().forEach(item => this.initInViewportObserver(item));
+    this.slides.forEach(item => this.initInViewportObserver(item));
   }
 
   initInViewportObserver(elem) {
@@ -65,8 +73,8 @@ class FtuiSwiper extends FtuiElement {
 
   onIntersectionChange(entries) {
     entries.forEach(entry => {
-      entry.target.isVisible = entry.isVisible;
-      if (entry.isIntersecting && entry.isVisible && this.value !== entry.target.id) {
+      entry.target.isVisible = ('isVisible' in entry) ? entry.isVisible : entry.isIntersecting;
+      if (entry.target.isVisible && this.value !== entry.target.id) {
         this.value = entry.target.id;
       }
     });
@@ -76,7 +84,8 @@ class FtuiSwiper extends FtuiElement {
     switch (name) {
       case 'value': {
         if (newValue !== oldValue) {
-          const target = this.slotMain.assignedElements().find(item => item.id === newValue);
+          const target = this.slides.find(item => item.id === newValue);
+          this.currentIndex = this.slides.indexOf(target);
           this.updateDots();
           if (target && !target.isVisible) {
             target.scrollIntoView();
@@ -84,38 +93,80 @@ class FtuiSwiper extends FtuiElement {
         }
       }
         break;
+      case 'interval':
+      case 'auto-play':
+        this.checkInterval();
+        break;
     }
   }
 
   onDotClicked(event) {
-    this.value = event.target.id.replace('dot-', '');
+    this.setValueByIndex(event.target.id.replace(`${this.id}-dot-`, ''));
+  }
+
+  back(iteration=1) {
+    this.currentIndex--;
+    if (this.currentIndex < 0) {
+      this.currentIndex = this.slides.length - 1;
+    }
+    if (this.slides[this.currentIndex].hidden && iteration < this.slides.length) {
+      this.back(iteration++);
+    } else {
+      this.setValueByIndex(this.currentIndex);
+    }
+  }
+
+  next(iteration = 0) {
+    this.currentIndex++;
+    if (this.currentIndex >= this.slides.length) {
+      this.currentIndex = 0;
+    }
+    if (this.slides[this.currentIndex].hidden && iteration < this.slides.length) {
+      this.next(iteration++);
+    } else {
+      this.setValueByIndex(this.currentIndex);
+    }
+  }
+
+  setValueByIndex(index) {
+    const slide = this.slides[index];
+    if (slide) {
+      this.value = slide.id;
+    }
   }
 
   createDots() {
     if (this.slotDots.assignedElements().length > 0 || !this.dots) {
       return;
     }
-    this.slotMain.assignedElements().forEach(item => {
+    this.slides.forEach((item, index) => {
       const elem = createElement('div', 'dot');
       elem.addEventListener('click', this.onDotClicked.bind(this));
       if (item.id === this.value) {
         elem.classList.add('active');
       }
-      elem.id = `dot-${item.id}`;
+      elem.id = `${this.id}-dot-${index}`;
       this.slotDots.appendChild(elem);
     })
   }
 
   updateDots() {
-    const dots = this.slotDots.assignedElements().length
+    const dotElements = this.slotDots.assignedElements().length
       ? this.slotDots.assignedElements() : this.slotDots.childNodes;
-    dots.forEach(item => {
-      if (item.id === `dot-${this.value}`) {
-        item.classList.add('active');
+    dotElements.forEach((dotElement, index) => {
+      if (this.currentIndex === index) {
+        dotElement.classList.add('active');
       } else {
-        item.classList.remove('active');
+        dotElement.classList.remove('active');
       }
     });
+  }
+
+  checkInterval() {
+    clearInterval(this.intervalTimer);
+    if (this.interval && this.autoPlay) {
+      this.intervalTimer = setInterval(() => this.next(), this.interval * 1000);
+    }
   }
 
 }

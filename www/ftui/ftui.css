@@ -1,6 +1,7 @@
 html, body, main {
   height: 100%;
   width: 100%;
+  touch-action: manipulation;
 }
 
 main {
@@ -48,6 +49,8 @@ footer {
   width: 100%;
   padding: 0.5em 0 0.5em 0;
   background: var(--view-footer-color);
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .bold {
@@ -672,6 +675,7 @@ ftui-icon ~ ftui-badge {
   z-index: 1;
 }
 
-[popup-target] {
+[popup-target], 
+[onclick] {
   cursor: pointer;
 }
