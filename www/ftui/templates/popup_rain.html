@@ -12,25 +12,17 @@
 			point-radius="0" 
 			label="Tagesvorhersage" 
 			color="yellow" 
-                        border-width="3"
+            border-width="3"
 			log="myLogProxy" 
 			file="-" 
 			spec="Func:logProxy_proplanta2Plot('WetterProplanta','rain_',$from,$to,0,'day')" 
 			unit="mm">
 		</ftui-chart-data>
-		<!--ftui-chart-data
-			point-radius="0" 
-			label="Regen" 
-			color="red" 
-			log="FileLog_Netatmo" 
-			spec="4:Netatmo.rain(?!_)" 
-			unit="mm"
-			fill>
-		</ftui-chart-data-->
 		<ftui-chart-data
 			point-radius="0" 
 			label="Regen pro Stunde" 
-			color="blue" 
+			color="blue"
+			border-width="3"
 			log="FileLog_Netatmo" 
 			spec="4:Netatmo.rain_hour"
 			unit="mm"
