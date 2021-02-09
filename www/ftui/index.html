@@ -67,7 +67,7 @@
     <ftui-view-toolbar>
       <ftui-image src="img/favicon-96x96.png" height="50px" width="50px" slot="start" onClick="window.location.reload();"></ftui-image>
       <ftui-label color="white">SmartHeim</ftui-label>
-      <ftui-icon name="refresh1" color="white" size="1" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header">Smart Devices</ftui-label>
@@ -94,6 +94,7 @@
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Rollläden</ftui-label>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header">Alle</ftui-label>
@@ -109,6 +110,7 @@
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Tür- und Fensterkontakte</ftui-label>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-loop file="templates/view_item_tuerfensterkontakt.html" index="device" list="HM_408B7A,HM_3F39D3,HM_3F3A03,HM_3F4A3C,HM_408C3D,HM_408B06"></ftui-loop>
@@ -119,6 +121,7 @@
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Wetter</ftui-label>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header" popup-target="popup-temperature-innen">Temperatur</ftui-label>
@@ -144,6 +147,7 @@
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Kalender</ftui-label>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header">kommende Termine</ftui-label>
@@ -155,6 +159,7 @@
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Telefon</ftui-label>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header">Anrufe</ftui-label>
@@ -166,6 +171,7 @@
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">HuGo</ftui-label>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-view-item>
@@ -257,6 +263,7 @@
     <ftui-view-toolbar>
       <ftui-nav-link slot="start"></ftui-nav-link>
       <ftui-label color="white">Einstellungen</ftui-label>
+      <ftui-icon name="refresh1" color="white" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header">Türen & Fenster</ftui-label>
