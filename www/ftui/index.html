@@ -57,6 +57,12 @@
 
   <title>SmartHeim</title>
 
+  <script>
+    function myFunction() {
+    ftuiApp.fhemService.forceRefresh()
+}
+  </script>
+
 </head>
 
 <body>
@@ -67,6 +73,8 @@
     <ftui-view-toolbar>
       <ftui-image src="img/favicon-96x96.png" height="50px" width="50px" slot="start" onClick="window.location.reload();"></ftui-image>
       <ftui-label color="white">SmartHeim</ftui-label>
+      <button onclick="myFunction()">Click me</button>
+
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header">Smart Devices</ftui-label>
