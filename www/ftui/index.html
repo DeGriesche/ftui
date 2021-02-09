@@ -53,15 +53,9 @@
   <!--meta name="fhemweb_url" content="http://192.168.178.28:80/fhem"-->
 
   <!-- verbose level 0-4 -->
-  <meta name="debug" content="4">
+  <meta name="debug" content="0">
 
   <title>SmartHeim</title>
-
-  <script>
-    function myFunction() {
-    ftuiApp.fhemService.forceRefresh()
-}
-  </script>
 
 </head>
 
@@ -73,8 +67,7 @@
     <ftui-view-toolbar>
       <ftui-image src="img/favicon-96x96.png" height="50px" width="50px" slot="start" onClick="window.location.reload();"></ftui-image>
       <ftui-label color="white">SmartHeim</ftui-label>
-      <button onclick="myFunction()">Click me</button>
-
+      <ftui-icon name="refresh1" color="white" size="1" onclick="ftuiApp.fhemService.forceRefresh()" slot="end"></ftui-icon>
     </ftui-view-toolbar>
     <ftui-view-section>
       <ftui-label slot="header">Smart Devices</ftui-label>
