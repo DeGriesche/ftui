@@ -21,6 +21,7 @@ class FtuiSegment extends FtuiElement {
     this.slotMain = this.shadowRoot.querySelector('slot');
 
     this.slotMain.addEventListener('click', this.onClick.bind(this));
+    document.addEventListener('ftuiVisibilityChanged', () => this.update());
   }
 
   template() {
@@ -43,9 +44,7 @@ class FtuiSegment extends FtuiElement {
   }
 
   onConnected() {
-    if (this.segments.length > 0) {
-      this.value = this.segments[0].value;
-    }
+    this.update();
   }
 
   onAttributeChanged(name, newValue, oldValue) {
@@ -94,6 +93,9 @@ class FtuiSegment extends FtuiElement {
     // index
     const target = this.segments.find(item => item.value === this.value);
     this.currentIndex = this.segments.indexOf(target);
+    if (this.currentIndex < 0) {
+      this.currentIndex = 0;
+    }
     // pill position
     this.selector.style.transform = 'translateX(' + ((this.selector.scrollWidth + 0.5)  * this.currentIndex) + 'px)';
     // active button
