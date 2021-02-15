@@ -268,7 +268,6 @@
       <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer links" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" action="attr" reading="DUOFERN_610B46:ASC_Ventilate_Window_Open" off="off" on="on"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer Mitte" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" action="attr" reading="DUOFERN_61F9C4:ASC_Ventilate_Window_Open" off="off" on="on"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Lüftungsautomatik Wohnzimmer rechts" description="Soll der Rollladen auf Lüftung fahren, wenn die Tür offen ist?" action="attr" reading="DUOFERN_610B38:ASC_Ventilate_Window_Open" off="off" on="on"></ftui-content>
-<span onclick="ftuiApp.fhemService.sendCommand('save')">SAVE</span>
     </ftui-view-section>
     <ftui-view-section>
       <ftui-label slot="header">Telefon und Internet</ftui-label>
@@ -294,6 +293,9 @@
       <ftui-content file="templates/view_item_einstellung.html" title="Verbindungsstatus" description="Benachrichtigungn wenn die Wärmepumpe offline ist?" reading="nf_NIBE_HP_connectionStatus" off="inactive" on="active"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Benachrichtigungen" description="Benachrichtigungn wenn die Wärmepumpe Nachrichen sendet?" reading="nf_NIBE_HP_notification" off="inactive" on="active"></ftui-content>
       <ftui-content file="templates/view_item_einstellung.html" title="Software Update" description="Benachrichtigungn wenn für die Wärmepumpe Software Updates verfügbar sind?" reading="nf_NIBE_HP_softwareUpgrade" off="inactive" on="active"></ftui-content>
+    </ftui-view-section>
+    <ftui-view-section>
+      <ftui-content onclick="ftuiApp.fhemService.sendCommand('save')">SAVE</ftui-content>
     </ftui-view-section>
   </ftui-view>
 
